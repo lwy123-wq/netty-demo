@@ -10,6 +10,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
+import java.util.Scanner;
+
 public class JsonSendClient {
     private int serverPort;
     private String serverIp;
@@ -41,6 +43,8 @@ public class JsonSendClient {
         try {
             f.sync();
             Channel channel= f.channel();
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
