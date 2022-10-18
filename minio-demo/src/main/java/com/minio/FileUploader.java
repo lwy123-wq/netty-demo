@@ -58,7 +58,7 @@ public class FileUploader {
             }*/
 
             //列出存储桶中被部分上传的对象
-            boolean found=minioClient.bucketExists("myasiatrip");
+            /*boolean found=minioClient.bucketExists("myasiatrip");
             if(found){
                 Iterable<Result<Upload>> myObjects=minioClient.listIncompleteUploads("myasiatrip");
                 for(Result<Upload> result: myObjects){
@@ -67,11 +67,23 @@ public class FileUploader {
                 }
             }else {
                 System.out.println("myasiatrip dose not exist");
-            }
+            }*/
 
             //获得指定对象前缀的存储桶策略
             //minioClient.setBucketPolicy(SetBucketPolicyArgs.builder().bucket("myasiatrip").config());
             //System.out.println("Current policy:"+minioClient.getBucketPolicy("myasiatrip"));
+
+            //删除一个未完整上传的对象
+            /*minioClient.removeIncompleteUpload("my-bucket","myobject"); //对象
+            System.out.println("successfully removed all incomplete upload session of my-bucketname/my-objectname");*/
+
+            //生成一个给HTTP GET请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行下载，即使其所在的存储桶是私有的。
+            // 这个presigned URL可以设置一个失效时间，默认值是7天。
+            String url=minioClient.presignedGetObject("myasiatrip","task3.zip",60*60*24);
+            System.out.println(url);
+
+            //
+
 
         } catch (MinioException | InvalidKeyException | IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
