@@ -79,10 +79,15 @@ public class FileUploader {
 
             //生成一个给HTTP GET请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行下载，即使其所在的存储桶是私有的。
             // 这个presigned URL可以设置一个失效时间，默认值是7天。
-            String url=minioClient.presignedGetObject("myasiatrip","task3.zip",60*60*24);
-            System.out.println(url);
+            /*String url=minioClient.presignedGetObject("myasiatrip","task3.zip",60*60*24);
+            System.out.println(url);*/
 
-            //
+            //生成一个给HTTP PUT请求用的presigned URL。浏览器/移动端的客户端可以用这个URL进行上传，即使其所在的存储桶是私有的。
+            // 这个presigned URL可以设置一个失效时间，默认值是7天。
+            String url1=minioClient.presignedPutObject("myasiatrip","task3.zip",60*60*24);
+            System.out.println(url1);
+
+            //允许给POST请求的presigned URL设置策略，比如接收对象上传的存储桶名称的策略，key名称前缀，过期策略。
 
 
         } catch (MinioException | InvalidKeyException | IOException | NoSuchAlgorithmException e) {
