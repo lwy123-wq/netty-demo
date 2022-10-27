@@ -20,12 +20,12 @@ public class FileUploader {
         try {
             //创建Bucket
             MinioClient minioClient=new MinioClient("http://localhost:9001", "admin", "12345678");
-            /*boolean isExist=minioClient.bucketExists("my-bucket");
+            boolean isExist=minioClient.bucketExists("my-bucket");
             if(isExist){
                 System.out.println("Bucket is exists.");
             }else {
                 minioClient.makeBucket("my-bucket");
-            }*/
+            }
 
             /*minioClient.putObject("myasiatrip","task3.zip","/home/lwy/文档/task3.zip",null);
             System.out.println("successfully uploaded");*/
@@ -86,7 +86,6 @@ public class FileUploader {
             // 这个presigned URL可以设置一个失效时间，默认值是7天。
             String url1=minioClient.presignedPutObject("myasiatrip","task3.zip",60*60*24);
             System.out.println(url1);
-
             //允许给POST请求的presigned URL设置策略，比如接收对象上传的存储桶名称的策略，key名称前缀，过期策略。
 
 
