@@ -27,8 +27,8 @@ public class FileUploader {
                 minioClient.makeBucket("my-bucket");
             }
 
-            /*minioClient.putObject("myasiatrip","task3.zip","/home/lwy/文档/task3.zip",null);
-            System.out.println("successfully uploaded");*/
+            minioClient.putObject("myasiatrip","task3.zip","/home/lwy/文档/task3.zip",null);
+            System.out.println("successfully uploaded");
 
             //查找Bucket
             /*List<Bucket> buckets=minioClient.listBuckets();
@@ -87,7 +87,6 @@ public class FileUploader {
             String url1=minioClient.presignedPutObject("myasiatrip","task3.zip",60*60*24);
             System.out.println(url1);
             //允许给POST请求的presigned URL设置策略，比如接收对象上传的存储桶名称的策略，key名称前缀，过期策略。
-
 
         } catch (MinioException | InvalidKeyException | IOException | NoSuchAlgorithmException e) {
             e.printStackTrace();
